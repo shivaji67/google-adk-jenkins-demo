@@ -1,10 +1,11 @@
-from flask import Flask
+from google.adk.agents import Agent
 
-app = Flask(__name__)
-
-@app.route("/")
-def home():
-    return "Google ADK Agent Running"
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000)
+root_agent = Agent(
+    name="travel_agent",
+    model="gemini-2.5-flash",
+    description="Travel planning assistant",
+    instruction="""
+    Help users plan trips, hotels, budgets,
+    tourist attractions and itineraries.
+    """
+)
